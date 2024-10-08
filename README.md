@@ -27,8 +27,6 @@ Each task includes the following properties:
 ### Prerequisites
 - NodeJs installed on your machine.
 - A code editor or IDE.
-1. Clone this repository or create a new project directory for your Task Tracker CLI.
-2. Initialize a version control system (e.g., Git) to manage your project.
 
 ### Running the Application
 1. Clone this repository or create a new project directory for your Task Tracker CLI.
