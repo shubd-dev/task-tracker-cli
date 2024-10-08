@@ -5,7 +5,7 @@ This project is part of roadmap.sh backend projects
 <a href="https://roadmap.sh/projects/task-tracker">https://roadmap.sh/projects/task-tracker</a>
 
 ## Overview
-Task Tracker is a command-line interface (CLI) application designed to help you track and manage your tasks efficiently. This project allows you to add, update, delete, and organize tasks based on their status (todo, in-progress, done). It is built using [Your Programming Language] and stores task data in a JSON file.
+Task Tracker is a command-line interface (CLI) application designed to help you track and manage your tasks efficiently. This project allows you to add, update, delete, and organize tasks based on their status (todo, in-progress, done). It is built using NodeJS JavaScript and stores task data in a JSON file.
 
 ## Features
 - **Add Tasks:** Create new tasks with descriptions.
@@ -25,14 +25,13 @@ Each task includes the following properties:
 ## Getting Started
 
 ### Prerequisites
-- [Your Programming Language] installed on your machine.
-- A code editor or IDE (e.g., VSCode, PyCharm).
-
-### Project Initialization
+- NodeJs installed on your machine.
+- A code editor or IDE.
 1. Clone this repository or create a new project directory for your Task Tracker CLI.
 2. Initialize a version control system (e.g., Git) to manage your project.
 
 ### Running the Application
+1. Clone this repository or create a new project directory for your Task Tracker CLI.
 1. Open your terminal or command prompt.
 2. Navigate to the project directory.
 3. Run the application using the following command format:
