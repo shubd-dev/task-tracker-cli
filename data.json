@@ -1,14 +1,8 @@
 {
   "1": {
-    "description": "is to eat and sleep",
-    "status": "done",
-    "createdAt": "Mon, 07 Oct 2024 11:02:09 GMT",
-    "updatedAt": "Mon, 07 Oct 2024 11:22:17 GMT"
-  },
-  "2": {
-    "description": "do homework",
+    "description": "buy books\"",
     "status": "todo",
-    "createdAt": "Mon, 07 Oct 2024 11:22:17 GMT",
-    "updatedAt": null
+    "createdAt": "Tue, 08 Oct 2024 11:33:12 GMT",
+    "updatedAt": "Tue, 08 Oct 2024 11:34:25 GMT"
   }
 }

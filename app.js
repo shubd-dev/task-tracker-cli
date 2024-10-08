@@ -1,12 +1,14 @@
-const { log, table, assert } = require('console');
-const readline = require('readline');
-const fs = require('fs');
-const { json } = require('stream/consumers');
+import { log, table, assert } from 'console';
+import readline from 'readline';
+import fs from 'fs';
+import { json } from 'stream/consumers';
 
 
-console.log('Welcome to Task Tracker');
 const path = './data.json';
 const dateObject = new Date();
+
+
+
 
 //add function to add task to json file
 function add(description){
@@ -26,6 +28,8 @@ function add(description){
     const nextIndex = Object.keys(data).length + 1;
     data[nextIndex] = dict;
     fs.writeFileSync(path, JSON.stringify(data, null, 2));
+    console.log(`Task added successfully (ID: ${nextIndex})`);
+    
 }
 
 function updateDescription(id, description){
@@ -33,9 +37,11 @@ function updateDescription(id, description){
     content[id].description = description;
     content[id].updatedAt = dateObject.toUTCString();
     fs.writeFileSync(path, JSON.stringify(content, null, 2));
+    console.log("Updated Description Successfully");
+    
 }
 
-statusValues = ['todo' , 'in-progress','done'];
+let statusValues = ['todo' , 'in-progress','done'];
 
 function updateStatus(id, status){
     let content = JSON.parse(fs.readFileSync(path, 'utf-8'));
@@ -51,6 +57,8 @@ function updateStatus(id, status){
     content[id].status = status;
     content[id].updatedAt = dateObject.toUTCString();
     fs.writeFileSync(path, JSON.stringify(content, null, 2));
+    console.log("Updated Status Successfully");
+    
 }
 
 function deleteTasks(id){
@@ -103,11 +111,63 @@ function listTasks(status) {
         }
     });
 }
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+
+function main() {
+    console.log("Task Tracker CLI\n");
+    console.log(`help - 
+        1. task-cli add <task>
+        2. task-cli update <id> "description" (quotes included)
+        3. task-cli delete <id>
+        4. task-cli mark-<status : in-progress, done> <id>
+        5. task-cli list (to list all)
+        6. task-cli list <status : in-progress, done>
+        7. task-cli exit
+    `);
+
+    // Function to handle user input
+    const handleCommand = (command) => {
+        if (command.split(" ")[0] === "add") {
+            add(command.slice(5, -1));
+        } else if (command.split(" ")[0] === "update") {
+            updateDescription(command.split(" ")[1], command.slice(10));
+        } else if (command.slice(0, 4) === 'mark') {
+            updateStatus(command.split("-")[1], command.split(" ")[1]);
+        } else if (command.split(" ")[0] === 'delete') {
+            deleteTasks(command.split(" ")[1]);
+        } else if (command === 'list') {
+            listTasks();
+        } else if (command.startsWith('list ')) {
+            const status = command.split(" ")[1];
+            listTasks(status);
+        } else if (command === "exit") {
+            rl.close();
+            return; // Exit the loop
+        } 
+
+        // Prompt for the next command
+        rl.question("task-cli ", handleCommand);
+    };
+
+    // Start prompting for commands
+    rl.question("task-cli ", handleCommand);
+}
+
+
+main();
+
 // add('do homework', 'not started');
 // updateDescription(1, 'is to eat and sleep');
 // updateStatus(1, 'mark-done');
 // deleteTasks(11);
-listTasks('todo');
+// listTasks('done');
+
+
 
 
 
