@@ -35,5 +35,6 @@ Each task includes the following properties:
 3. Run the application using the following command format:
 
    ```bash
+   npm install
    node app.js
    ```
